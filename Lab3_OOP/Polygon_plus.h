@@ -1,9 +1,8 @@
 #pragma once
-//#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <iostream>
 
 using namespace std;
-
 
 class Point
 {
@@ -16,16 +15,31 @@ public:
 	Point operator- (Point& other);
 	Point operator* (Point& other);
 	friend ostream& operator << (ostream& stream, Point& point);
+
+	double getX();
+	double getY();
+	void setX(double xNew);
+	void setY(double yNew);
+
 	 
 	void changePoint();
-
 };
 
 
-class Polygon_plus
+
+class Line
 {
+private:
+	Point point1, point2;
 public:
-	Polygon_plus();
-	~Polygon_plus();
+	Line(Point& p1, Point& p2);
+};
+
+class Polygon
+{
+private:
+
+public:
+	~Polygon();
 };
 
