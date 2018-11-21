@@ -44,6 +44,13 @@ Point Point::operator*(Point & other)
 	return res;
 }
 
+bool Point::operator<(Point & other)
+{
+	if ((y < other.y) || (y == other.y && x < other.x)) return true;
+	else
+		return false;
+}
+
 double Point::getX()
 {
 	return x;
@@ -64,31 +71,89 @@ void Point::setY(double yNew)
 	y = yNew;
 }
 
+double Point::moduleOfVect()
+{
+	return sqrt(x*x + y*y);
+}
+
 void Point::changePoint()
 {
 	sf::CircleShape p(2.f);
 	p.setFillColor(sf::Color::Green);
 }
 
-ostream & operator<<(ostream & stream, Point & point)
+double Point::polarAngle()
 {
-	// ???
-	return stream;
+	if (x == 0.0 && y == 0.0) return -1.0;
+	if (x == 0.0 && y > 0.0) return 90.0;
+	if (x == 0.0 && y <= 0.0) return 270.0;
+	double phi = atan(y / x)*360./(2* 3, 14159265358979);
+
+	if (x == 0.0 && y > 0.0) return phi;
+	if (x == 0.0 && y <= 0.0) return phi + 360.;
+	else
+		return phi + 180.;
 }
 
-Line::Line(Point & p1, Point & p2)
+bool Point::isLeft(Point pBase, Point p1)
 {
-	point1.setX(p1.getX());
-	point1.setY(p1.getY());
-	point2.setX(p1.getX());
-	point2.setY(p1.getY());
+	Point p = *this;
+	Point a = p1 - pBase;
+	Point b = p - pBase;
+	double sign = a.x*b.y - b.x*a.y;
+	return sign >= 0.0;
+}
 
 
-	/*
-	sf::Vertex line[] =
+void Graham(vector<Point> vect)
+{
+	int temp = 0;
+	for (int i = 0; i < vect.size(); i++)
 	{
-	sf::Vertex(sf::Vector2f(point1.getX().f, point1.getY().f)),
-	sf::Vertex(sf::Vector2f(point2.getX().f, point2.getY().f)),
-	};
-	*/
+		if (vect[i] < vect[temp]) temp = i;
+	}
+	swap(vect[0], vect[temp]);
+	Point origin = vect[0];
+	sort(vect, origin);
+	
+	vector<Point> s;
+	s.push_back(vect[0]);
+	s.push_back(vect[1]);
+	for (int i = 1; i < vect.size();)
+	{
+		//while (vect[i]->isLeft(s.front()-1, s.front()))
+
+	}
+
 }
+
+int polarCompare(Point p1, Point p2, Point origin)
+{
+	Point temp1 = p1 - origin;
+	Point temp2 = p2 - origin;
+	double polar1 = temp1.polarAngle();
+	double polar2 = temp2.polarAngle();
+	if (polar1 < polar2) return -1;
+	if (polar1 > polar2) return 1;
+	if (temp1.moduleOfVect() < temp2.moduleOfVect())
+		return -1;
+	if (temp1.moduleOfVect() > temp2.moduleOfVect())
+		return 1;
+	return 0;
+}
+
+void sort(vector<Point> vect, Point origin)
+{
+	Point temp;
+	for (int i = 1; i<vect.size() - 1; i++)
+		for (int j = 1; j < vect.size() - 1; j++)
+		{
+			if (polarCompare(vect[i], vect[j], origin) == 1)
+			{
+				temp = vect[i];
+				vect[i] = vect[i + 1];
+				vect[i + 1] = temp;
+			}
+		}
+}
+
