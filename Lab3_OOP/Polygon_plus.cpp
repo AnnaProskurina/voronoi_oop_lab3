@@ -104,8 +104,19 @@ bool Point::isLeft(Point pBase, Point p1)
 	return sign >= 0.0;
 }
 
+bool Point::isRight(Point pBase, Point p1)
+{
+	Point p = *this;
+	Point a = p1 - pBase;
+	Point b = p - pBase;
+	double sign = a.x*b.y - b.x*a.y;
+	return sign <= 0.0;
+}
 
-void Graham(vector<Point> vect)
+//Graham to class
+
+
+vector<Point> Graham(vector<Point> vect)
 {
 	int temp = 0;
 	for (int i = 0; i < vect.size(); i++)
@@ -114,18 +125,29 @@ void Graham(vector<Point> vect)
 	}
 	swap(vect[0], vect[temp]);
 	Point origin = vect[0];
-	sort(vect, origin);
+	sortByPolar(vect, origin);
 	
 	vector<Point> s;
 	s.push_back(vect[0]);
+
 	s.push_back(vect[1]);
-	for (int i = 1; i < vect.size();)
+	int j = s.size() - 1;
+	for (int i = 2; i < vect.size(); i++)
 	{
-		//while (vect[i]->isLeft(s.front()-1, s.front()))
-
+		while (s.size()>1 && vect[i].isLeft(s[j], s[j-1]) == false)
+		{
+			if(s.size() > 1)
+			{
+				s.pop_back();
+				j--;
+			}
+		}
+		s.push_back(vect[i]);
+		j++;
 	}
-
+	return s;
 }
+
 
 int polarCompare(Point p1, Point p2, Point origin)
 {
@@ -142,7 +164,8 @@ int polarCompare(Point p1, Point p2, Point origin)
 	return 0;
 }
 
-void sort(vector<Point> vect, Point origin)
+
+void sortByPolar(vector<Point> vect, Point origin)
 {
 	Point temp;
 	for (int i = 1; i<vect.size() - 1; i++)
@@ -157,3 +180,58 @@ void sort(vector<Point> vect, Point origin)
 		}
 }
 
+
+//Keil-Kirkpatrick
+
+vector<Point> Keil_Kirkpatrick(vector<Point> vect)
+{
+	vector<Point> LeftCoord, RightCoord, temporary;
+	Point temp;
+	for (int i = 1; i<vect.size() - 1; i++)
+			if (vect[i-1] < vect[i])
+			{
+				temp = vect[i];
+				vect[i] = vect[i + 1];
+				vect[i + 1] = temp;
+		}
+
+	int t = 1;
+	LeftCoord.push_back(vect[t-1]);
+	while (vect[t - 1].getY() == vect[t].getY()) t++;
+	RightCoord.push_back(vect[t - 1]);
+
+	vector<Point> s;
+	s.push_back(vect[0]);
+
+	s.push_back(vect[1]);
+	int j = s.size() - 1;
+	for (int i = 2; i < LeftCoord.size(); i++)
+	{
+		while (s.size()>1 && LeftCoord[i].isRight(s[j], s[j - 1]) == false)
+		{
+			if (s.size() > 1)
+			{
+				s.pop_back();
+				j--;
+			}
+		}
+		s.push_back(LeftCoord[i]);
+		j++;
+	}
+
+	for (int i = RightCoord.size(); i < 0; i--)
+	{
+		while (s.size()>1 && RightCoord[i].isLeft(s[j], s[j - 1]) == false)
+		{
+			if (s.size() > 1)
+			{
+				s.pop_back();
+				j--;
+			}
+		}
+		s.push_back(RightCoord[i]);
+		j++;
+	}
+
+	return s;
+}

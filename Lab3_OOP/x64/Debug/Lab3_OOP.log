@@ -1,2 +1,6 @@
-﻿  main.cpp
+﻿  Polygon_plus.cpp
+c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\polygon_plus.cpp(20): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\polygon_plus.cpp(134): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\polygon_plus.cpp(207): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\polygon_plus.cpp(222): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   Lab3_OOP.vcxproj -> C:\Users\Анна\Documents\LABS\voronoi_oop_lab3\Lab3_OOP\x64\Debug\Lab3_OOP.exe

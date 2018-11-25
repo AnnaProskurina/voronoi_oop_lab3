@@ -26,10 +26,15 @@ public:
 	double moduleOfVect();	 
 	void changePoint();
 	double polarAngle();
-	bool isLeft(Point p0, Point p1);
+	bool isLeft(Point pBase, Point p1);
+	bool isRight(Point pBase, Point p1);
+
 };
 
 
-void Graham(vector<Point> vect);
+vector<Point> Graham(vector<Point> vect);
 int polarCompare(Point p1, Point p2, Point origin);
-void sort(vector<Point> vect, Point origin);
+void sortByPolar(vector<Point> vect, Point origin);
+
+
+vector<Point> Keil_Kirkpatrick(vector<Point> vect);
