@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Polygon_plus.h"
 #include <SFML/Graphics.hpp>
+#include "Algorithms.h"
 
 
 using namespace std;

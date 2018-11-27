@@ -31,10 +31,4 @@ public:
 
 };
 
-
-vector<Point> Graham(vector<Point> vect);
-int polarCompare(Point p1, Point p2, Point origin);
-void sortByPolar(vector<Point> vect, Point origin);
-
-
 vector<Point> Keil_Kirkpatrick(vector<Point> vect);

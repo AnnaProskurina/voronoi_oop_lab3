@@ -21,9 +21,15 @@
     <ClCompile Include="Polygon_plus.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Algorithms.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Polygon_plus.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
