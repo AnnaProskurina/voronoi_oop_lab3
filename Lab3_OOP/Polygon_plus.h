@@ -16,7 +16,9 @@ public:
 	Point operator+ (Point& other);
 	Point operator- (Point& other);
 	Point operator* (Point& other);
-	bool operator< (Point& other);
+	bool operator< (Point& other); //sorted by Y coordinate
+
+	bool sortByX(Point& other);
 
 
 	double getX();
@@ -30,5 +32,3 @@ public:
 	bool isRight(Point pBase, Point p1);
 
 };
-
-vector<Point> Keil_Kirkpatrick(vector<Point> vect);

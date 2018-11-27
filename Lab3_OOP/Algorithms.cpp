@@ -99,6 +99,59 @@ vector<Point> Graham::algo()
 	return GrahamAlgo(polygon);
 }
 
+vector<Point> Keil_Kirkpatrik::Keil_KirkpatrikAlgo(vector<Point> vect) //fix or rewrite
+{
+	vector<Point> LeftCoord, RightCoord, temporary;
+	Point temp;
+	for (int i = 1; i<vect.size() - 1; i++)
+		if (vect[i - 1] < vect[i])
+		{
+			temp = vect[i];
+			vect[i] = vect[i + 1];
+			vect[i + 1] = temp;
+		}
+
+	int t = 1;
+	LeftCoord.push_back(vect[t - 1]);
+	while (vect[t - 1].getY() == vect[t].getY()) t++;
+	RightCoord.push_back(vect[t - 1]);
+
+	vector<Point> s;
+	s.push_back(vect[0]);
+
+	s.push_back(vect[1]);
+	int j = s.size() - 1;
+	for (int i = 2; i < LeftCoord.size(); i++)
+	{
+		while (s.size()>1 && LeftCoord[i].isRight(s[j], s[j - 1]) == false)
+		{
+			if (s.size() > 1)
+			{
+				s.pop_back();
+				j--;
+			}
+		}
+		s.push_back(LeftCoord[i]);
+		j++;
+	}
+
+	for (int i = RightCoord.size(); i < 0; i--)
+	{
+		while (s.size()>1 && RightCoord[i].isLeft(s[j], s[j - 1]) == false)
+		{
+			if (s.size() > 1)
+			{
+				s.pop_back();
+				j--;
+			}
+		}
+		s.push_back(RightCoord[i]);
+		j++;
+	}
+
+	return s;
+}
+
 Keil_Kirkpatrik::Keil_Kirkpatrik()
 {
 	int i = 0;
@@ -119,4 +172,31 @@ Keil_Kirkpatrik::Keil_Kirkpatrik(vector<Point> vec)
 vector<Point> Keil_Kirkpatrik::algo()
 {
 	return Keil_KirkpatrikAlgo(polygon);
+}
+
+vector<Point> Andrew_Jarwis::Andrew_JarwisAlgo(vector<Point> vect) //write code of left and right points + algo
+{
+
+}
+
+Andrew_Jarwis::Andrew_Jarwis()
+{
+	int i = 0;
+	while (i < numOfPoints)
+	{
+		Point p;
+		p.setX(double(abs(rand() % bordersOfScreen)));
+		p.setY(double(abs(rand() % bordersOfScreen)));
+		polygon.push_back(p);
+	}
+}
+
+Andrew_Jarwis::Andrew_Jarwis(vector<Point> vec)
+{
+	copy(vec.begin(), vec.end(), polygon);
+}
+
+vector<Point> Andrew_Jarwis::algo()
+{
+	return Andrew_JarwisAlgo(polygon);
 }

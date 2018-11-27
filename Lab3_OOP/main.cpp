@@ -50,7 +50,7 @@ int main()
 	Point p8(0.0, 10.0);
 	vector<Point> grahamTest = { p1, p2,  p5, p3, p4, p6, p7, p8 };
 
-	vector<Point> res = Keil_Kirkpatrick(grahamTest);
+	vector<Point> res; // just to test
 	
 	for (int i = 0; i < res.size(); i++)
 	{
