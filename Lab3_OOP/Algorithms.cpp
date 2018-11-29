@@ -1,18 +1,13 @@
 #include "Algorithms.h"
 
+int numOfPoints = 100;
+int bordersOfScreen = 600;
+vector<Point> polygon;
 
-
-Algorithms::Algorithms()
-{
-}
-
-vector<vector<Point>> Algorithms::algo()
-{
-}
 
 //***********************************
 
-vector<vector<Point>> Graham::GrahamAlgo(vector<Point> vect)
+vector<vector<Point>> GrahamAlgo(vector<Point> vect)
 {
 	int temp = 0;
 	for (int i = 0; i < vect.size(); i++)
@@ -50,9 +45,9 @@ vector<vector<Point>> Graham::GrahamAlgo(vector<Point> vect)
 		j++;
 	}
 	return toPrint;
-}
+};
 
-int Graham::polarCompare(Point p1, Point p2, Point origin)
+int polarCompare(Point p1, Point p2, Point origin)
 {
 	Point temp1 = p1 - origin;
 	Point temp2 = p2 - origin;
@@ -65,9 +60,9 @@ int Graham::polarCompare(Point p1, Point p2, Point origin)
 	if (temp1.moduleOfVect() > temp2.moduleOfVect())
 		return 1;
 	return 0;
-}
+};
 
-void Graham::sortByPolar(vector<Point> vect, Point origin)
+void sortByPolar(vector<Point> vect, Point origin)
 {
 	Point temp;
 	for (int i = 1; i<vect.size() - 1; i++)
@@ -80,34 +75,14 @@ void Graham::sortByPolar(vector<Point> vect, Point origin)
 				vect[i + 1] = temp;
 			}
 		}
-}
+};
 
-Graham::Graham()
-{
-	int i = 0;
-	while (i < numOfPoints)
-	{
-		Point p;
-		p.setX(double(abs(rand()% bordersOfScreen)));
-		p.setY(double(abs(rand() % bordersOfScreen)));
-		polygon.push_back(p);
-	}
-}
 
-Graham::Graham(vector<Point> vec)
-{
-	copy(vec.begin(), vec.end(), polygon);
-}
-
-vector<vector<Point>> Graham::algo()
-{
-	return GrahamAlgo(polygon);
-}
 
 
 //***********************************
 
-vector<vector<Point>> Keil_Kirkpatrik::Keil_KirkpatrikAlgo(vector<Point> vect) //fix or rewrite
+vector<vector<Point>> Keil_KirkpatrikAlgo(vector<Point> vect) //fix or rewrite
 {
 	vector<Point> LeftCoord, RightCoord;
 	Point temp;
@@ -133,9 +108,9 @@ vector<vector<Point>> Keil_Kirkpatrik::Keil_KirkpatrikAlgo(vector<Point> vect) /
 	}
 
 	return toPrint;
-}
+};
 
-Keil_Kirkpatrik::Keil_Kirkpatrik()
+/*Keil_Kirkpatrik()
 {
 	int i = 0;
 	while (i < numOfPoints)
@@ -145,22 +120,13 @@ Keil_Kirkpatrik::Keil_Kirkpatrik()
 		p.setY(double(abs(rand() % bordersOfScreen)));
 		polygon.push_back(p);
 	}
-}
+}*/
 
-Keil_Kirkpatrik::Keil_Kirkpatrik(vector<Point> vec)
-{
-	copy(vec.begin(), vec.end(), polygon);
-}
-
-vector<vector<Point>> Keil_Kirkpatrik::algo()
-{
-	return Keil_KirkpatrikAlgo(polygon);
-}
 
 
 //***********************************
 
-vector<vector<Point>> Andrew_Jarwis::Andrew_JarwisAlgo(vector<Point> vect)
+vector<vector<Point>> Andrew_JarwisAlgo(vector<Point> vect)
 {
 	sortByX(vect);
 
@@ -208,9 +174,9 @@ vector<vector<Point>> Andrew_Jarwis::Andrew_JarwisAlgo(vector<Point> vect)
 		}
 	}
 	return toPrint;
-}
+};
 
-vector<Point> Andrew_Jarwis::sortByX(vector<Point> vect)
+void sortByX(vector<Point> vect)
 {
 	Point temp;
 	for (int i = 1; i<vect.size() - 1; i++)
@@ -223,34 +189,12 @@ vector<Point> Andrew_Jarwis::sortByX(vector<Point> vect)
 				vect[i + 1] = temp;
 			}
 		}
+};
 
-}
-
-Andrew_Jarwis::Andrew_Jarwis()
-{
-	int i = 0;
-	while (i < numOfPoints)
-	{
-		Point p;
-		p.setX(double(abs(rand() % bordersOfScreen)));
-		p.setY(double(abs(rand() % bordersOfScreen)));
-		polygon.push_back(p);
-	}
-}
-
-Andrew_Jarwis::Andrew_Jarwis(vector<Point> vec)
-{
-	copy(vec.begin(), vec.end(), polygon);
-}
-
-vector<vector<Point>> Andrew_Jarwis::algo()
-{
-	return Andrew_JarwisAlgo(polygon);
-}
 
 //***********************************
 
-vector<vector<Point>> quickRec::quickRecAlgo(vector<Point> vect)
+vector<vector<Point>> quickRecAlgo(vector<Point> vect)
 {
 	sortByX(vect);
 
@@ -271,42 +215,5 @@ vector<vector<Point>> quickRec::quickRecAlgo(vector<Point> vect)
 	downHull.push_back(right);
 
 	vector<vector<Point>> toPrint;
-
-}
-
-vector<Point> quickRec::sortByX(vector<Point> vect)
-{
-	Point temp;
-	for (int i = 1; i<vect.size() - 1; i++)
-		for (int j = 0; j < vect.size(); j++)
-		{
-			if (vect[i - 1].sortX(vect[j]))
-			{
-				temp = vect[i];
-				vect[i] = vect[i + 1];
-				vect[i + 1] = temp;
-			}
-		}
-}
-
-quickRec::quickRec()
-{
-	int i = 0;
-	while (i < numOfPoints)
-	{
-		Point p;
-		p.setX(double(abs(rand() % bordersOfScreen)));
-		p.setY(double(abs(rand() % bordersOfScreen)));
-		polygon.push_back(p);
-	}
-}
-
-quickRec::quickRec(vector<Point> vec)
-{
-	copy(vec.begin(), vec.end(), polygon);
-}
-
-vector<vector<Point>> quickRec::algo()
-{
-	return quickRecAlgo(polygon);
-}
+	return toPrint;
+};
