@@ -1,12 +1,11 @@
-﻿  Algorithms.cpp
+﻿cl : командная строка warning D9028: сбой минимальной повторной сборки, возврат к обычной сборке
+  Algorithms.cpp
 c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(29): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(119): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(134): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
 c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(204): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
 c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(206): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
 c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(2294): error C4996: 'std::copy::_Unchecked_iterators::_Deprecate': Call to 'std::copy' with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
   c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(2294): note:  см. объявление "std::copy::_Unchecked_iterators::_Deprecate"
-  c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(165): note: выполняется компиляция ссылки на экземпляр шаблон функции "_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::vector<_Ty,std::allocator<_Ty>>>(_InIt,_InIt,_OutIt)"
+  c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(90): note: выполняется компиляция ссылки на экземпляр шаблон функции "_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::vector<_Ty,std::allocator<_Ty>>>(_InIt,_InIt,_OutIt)"
           with
           [
               _OutIt=std::vector<Point,std::allocator<Point>>,
@@ -31,7 +30,7 @@ c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.
               _OutIt=std::vector<Point,std::allocator<Point>>,
               _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Point>>>
           ]
-  c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(165): note: выполняется компиляция ссылки на экземпляр шаблон функции "_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::vector<_Ty,std::allocator<_Ty>>>(_InIt,_InIt,_OutIt)"
+  c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(90): note: выполняется компиляция ссылки на экземпляр шаблон функции "_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::vector<_Ty,std::allocator<_Ty>>>(_InIt,_InIt,_OutIt)"
           with
           [
               _OutIt=std::vector<Point,std::allocator<Point>>,

@@ -6,12 +6,13 @@ Algorithms::Algorithms()
 {
 }
 
-vector<Point> Algorithms::algo()
+vector<vector<Point>> Algorithms::algo()
 {
 }
 
+//***********************************
 
-vector<Point> Graham::GrahamAlgo(vector<Point> vect)
+vector<vector<Point>> Graham::GrahamAlgo(vector<Point> vect)
 {
 	int temp = 0;
 	for (int i = 0; i < vect.size(); i++)
@@ -23,9 +24,15 @@ vector<Point> Graham::GrahamAlgo(vector<Point> vect)
 	sortByPolar(vect, origin);
 
 	vector<Point> s;
+	vector<vector<Point>> toPrint;
 	s.push_back(vect[0]);
+	s.back().changePoint();
+	toPrint.push_back(s);
 
 	s.push_back(vect[1]);
+	s.back().changePoint();
+	toPrint.push_back(s);
+
 	int j = s.size() - 1;
 	for (int i = 2; i < vect.size(); i++)
 	{
@@ -38,9 +45,11 @@ vector<Point> Graham::GrahamAlgo(vector<Point> vect)
 			}
 		}
 		s.push_back(vect[i]);
+		s.back().changePoint();
+		toPrint.push_back(s);
 		j++;
 	}
-	return s;
+	return toPrint;
 }
 
 int Graham::polarCompare(Point p1, Point p2, Point origin)
@@ -90,14 +99,17 @@ Graham::Graham(vector<Point> vec)
 	copy(vec.begin(), vec.end(), polygon);
 }
 
-vector<Point> Graham::algo()
+vector<vector<Point>> Graham::algo()
 {
 	return GrahamAlgo(polygon);
 }
 
-vector<Point> Keil_Kirkpatrik::Keil_KirkpatrikAlgo(vector<Point> vect) //fix or rewrite
+
+//***********************************
+
+vector<vector<Point>> Keil_Kirkpatrik::Keil_KirkpatrikAlgo(vector<Point> vect) //fix or rewrite
 {
-	vector<Point> LeftCoord, RightCoord, temporary;
+	vector<Point> LeftCoord, RightCoord;
 	Point temp;
 	for (int i = 1; i<vect.size() - 1; i++)
 		if (vect[i - 1] < vect[i])
@@ -113,39 +125,14 @@ vector<Point> Keil_Kirkpatrik::Keil_KirkpatrikAlgo(vector<Point> vect) //fix or 
 	RightCoord.push_back(vect[t - 1]);
 
 	vector<Point> s;
-	s.push_back(vect[0]);
+	vector<vector<Point>> toPrint;
 
-	s.push_back(vect[1]);
-	int j = s.size() - 1;
-	for (int i = 2; i < LeftCoord.size(); i++)
+	for (int i = 0; i < LeftCoord.size(); i++)
 	{
-		while (s.size()>1 && LeftCoord[i].isRight(s[j], s[j - 1]) == false)
-		{
-			if (s.size() > 1)
-			{
-				s.pop_back();
-				j--;
-			}
-		}
-		s.push_back(LeftCoord[i]);
-		j++;
+		
 	}
 
-	for (int i = RightCoord.size(); i < 0; i--)
-	{
-		while (s.size()>1 && RightCoord[i].isLeft(s[j], s[j - 1]) == false)
-		{
-			if (s.size() > 1)
-			{
-				s.pop_back();
-				j--;
-			}
-		}
-		s.push_back(RightCoord[i]);
-		j++;
-	}
-
-	return s;
+	return toPrint;
 }
 
 Keil_Kirkpatrik::Keil_Kirkpatrik()
@@ -165,12 +152,15 @@ Keil_Kirkpatrik::Keil_Kirkpatrik(vector<Point> vec)
 	copy(vec.begin(), vec.end(), polygon);
 }
 
-vector<Point> Keil_Kirkpatrik::algo()
+vector<vector<Point>> Keil_Kirkpatrik::algo()
 {
 	return Keil_KirkpatrikAlgo(polygon);
 }
 
-vector<Point> Andrew_Jarwis::Andrew_JarwisAlgo(vector<Point> vect) 
+
+//***********************************
+
+vector<vector<Point>> Andrew_Jarwis::Andrew_JarwisAlgo(vector<Point> vect)
 {
 	sortByX(vect);
 
@@ -191,6 +181,8 @@ vector<Point> Andrew_Jarwis::Andrew_JarwisAlgo(vector<Point> vect)
 	downHull.push_back(right);
 
 	vector<Point> s;
+	vector<vector<Point>> toPrint;
+
 
 	for (int i = 1; i < upHull.size() - 1; i++)
 	{
@@ -198,6 +190,9 @@ vector<Point> Andrew_Jarwis::Andrew_JarwisAlgo(vector<Point> vect)
 		{
 			if (upHull[j - 1].relateToLine(upHull[i - 1], upHull[i]) == upHull[j].relateToLine(upHull[i - 1], upHull[i]))
 				s.push_back(upHull[i]);
+				s.back().changePoint();
+				toPrint.push_back(s);
+
 		}
 	}
 
@@ -207,11 +202,12 @@ vector<Point> Andrew_Jarwis::Andrew_JarwisAlgo(vector<Point> vect)
 		{
 			if (upHull[j - 1].relateToLine(upHull[i - 1], upHull[i]) == upHull[j].relateToLine(upHull[i - 1], upHull[i]))
 				s.push_back(downHull[i]);
+				s.back().changePoint();
+				toPrint.push_back(s);
+
 		}
 	}
-
-
-	return s;
+	return toPrint;
 }
 
 vector<Point> Andrew_Jarwis::sortByX(vector<Point> vect)
@@ -247,7 +243,70 @@ Andrew_Jarwis::Andrew_Jarwis(vector<Point> vec)
 	copy(vec.begin(), vec.end(), polygon);
 }
 
-vector<Point> Andrew_Jarwis::algo()
+vector<vector<Point>> Andrew_Jarwis::algo()
 {
 	return Andrew_JarwisAlgo(polygon);
+}
+
+//***********************************
+
+vector<vector<Point>> quickRec::quickRecAlgo(vector<Point> vect)
+{
+	sortByX(vect);
+
+	Point left = vect.front();
+	Point right = vect.back();
+
+	vector<Point> upHull, downHull;
+	upHull.push_back(left);
+	downHull.push_back(left);
+
+	for (int i = 1; i < vect.size() - 1; i++)
+	{
+		if (vect[i].relateToLine(left, right) == true)
+			upHull.push_back(vect[i]);
+		else
+			downHull.push_back(vect[i]);
+	}
+	downHull.push_back(right);
+
+	vector<vector<Point>> toPrint;
+
+}
+
+vector<Point> quickRec::sortByX(vector<Point> vect)
+{
+	Point temp;
+	for (int i = 1; i<vect.size() - 1; i++)
+		for (int j = 0; j < vect.size(); j++)
+		{
+			if (vect[i - 1].sortX(vect[j]))
+			{
+				temp = vect[i];
+				vect[i] = vect[i + 1];
+				vect[i + 1] = temp;
+			}
+		}
+}
+
+quickRec::quickRec()
+{
+	int i = 0;
+	while (i < numOfPoints)
+	{
+		Point p;
+		p.setX(double(abs(rand() % bordersOfScreen)));
+		p.setY(double(abs(rand() % bordersOfScreen)));
+		polygon.push_back(p);
+	}
+}
+
+quickRec::quickRec(vector<Point> vec)
+{
+	copy(vec.begin(), vec.end(), polygon);
+}
+
+vector<vector<Point>> quickRec::algo()
+{
+	return quickRecAlgo(polygon);
 }
