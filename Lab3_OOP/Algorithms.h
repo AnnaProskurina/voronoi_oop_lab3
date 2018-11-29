@@ -39,6 +39,7 @@ class  Andrew_Jarwis:public Algorithms
 {
 private:
 	vector<Point> Andrew_JarwisAlgo(vector<Point> vect);
+	vector<Point> sortByX(vector<Point> vect);
 public:
 	Andrew_Jarwis();
 	Andrew_Jarwis(vector<Point> vec);

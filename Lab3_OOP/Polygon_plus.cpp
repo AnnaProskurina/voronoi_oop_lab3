@@ -51,7 +51,7 @@ bool Point::operator<(Point & other)
 		return false;
 }
 
-bool Point::sortByX(Point & other)
+bool Point::sortX(Point & other)
 {
 	if ((x < other.x) || (x == other.x && y < other.y)) return true;
 	else
@@ -118,4 +118,11 @@ bool Point::isRight(Point pBase, Point p1)
 	Point b = p - pBase;
 	double sign = a.x*b.y - b.x*a.y;
 	return sign <= 0.0;
+}
+
+bool Point::relateToLine(Point P1, Point P2)
+{
+	if ((x - P1.x) / (P2.x - P1.x) - (y - P1.y) / (P2.y - P1.y) >= 0) return true;
+	else 
+		return false;
 }

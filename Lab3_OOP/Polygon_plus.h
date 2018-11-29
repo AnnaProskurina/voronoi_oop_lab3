@@ -18,7 +18,7 @@ public:
 	Point operator* (Point& other);
 	bool operator< (Point& other); //sorted by Y coordinate
 
-	bool sortByX(Point& other);
+	bool sortX(Point& other);
 
 
 	double getX();
@@ -30,5 +30,5 @@ public:
 	double polarAngle();
 	bool isLeft(Point pBase, Point p1);
 	bool isRight(Point pBase, Point p1);
-
+	bool relateToLine(Point P1, Point P2);
 };

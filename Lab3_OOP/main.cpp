@@ -52,10 +52,10 @@ int main()
 
 	vector<Point> res; // just to test
 	
-	for (int i = 0; i < res.size(); i++)
+	/*for (int i = 0; i < res.size(); i++)
 	{
 		cout << res[i].getX() << "  " << res[i].getY() << "  "<<endl;
-	}
+	}*/
 	
 	system("pause");
 	return 0;

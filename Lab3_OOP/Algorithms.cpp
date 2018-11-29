@@ -11,10 +11,6 @@ vector<Point> Algorithms::algo()
 }
 
 
-Algorithms::~Algorithms()
-{
-}
-
 vector<Point> Graham::GrahamAlgo(vector<Point> vect)
 {
 	int temp = 0;
@@ -174,8 +170,63 @@ vector<Point> Keil_Kirkpatrik::algo()
 	return Keil_KirkpatrikAlgo(polygon);
 }
 
-vector<Point> Andrew_Jarwis::Andrew_JarwisAlgo(vector<Point> vect) //write code of left and right points + algo
+vector<Point> Andrew_Jarwis::Andrew_JarwisAlgo(vector<Point> vect) 
 {
+	sortByX(vect);
+
+	Point left = vect.front();
+	Point right = vect.back();
+
+	vector<Point> upHull, downHull;
+	upHull.push_back(left);
+	downHull.push_back(left);
+
+	for (int i = 1; i < vect.size()-1; i++)
+	{
+		if (vect[i].relateToLine(left, right) == true)
+			upHull.push_back(vect[i]);
+		else
+			downHull.push_back(vect[i]);
+	}
+	downHull.push_back(right);
+
+	vector<Point> s;
+
+	for (int i = 1; i < upHull.size() - 1; i++)
+	{
+		for (int j = 1; j < upHull.size() - 1; j++)
+		{
+			if (upHull[j - 1].relateToLine(upHull[i - 1], upHull[i]) == upHull[j].relateToLine(upHull[i - 1], upHull[i]))
+				s.push_back(upHull[i]);
+		}
+	}
+
+	for (int i = downHull.size(); i > 1; i--)
+	{
+		for (int j = downHull.size(); j > 1; j--)
+		{
+			if (upHull[j - 1].relateToLine(upHull[i - 1], upHull[i]) == upHull[j].relateToLine(upHull[i - 1], upHull[i]))
+				s.push_back(downHull[i]);
+		}
+	}
+
+
+	return s;
+}
+
+vector<Point> Andrew_Jarwis::sortByX(vector<Point> vect)
+{
+	Point temp;
+	for (int i = 1; i<vect.size() - 1; i++)
+		for (int j = 0; j < vect.size(); j++)
+		{
+			if (vect[i-1].sortX(vect[j]))
+			{
+				temp = vect[i];
+				vect[i] = vect[i + 1];
+				vect[i + 1] = temp;
+			}
+		}
 
 }
 
