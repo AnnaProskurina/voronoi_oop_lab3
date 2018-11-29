@@ -1,9 +1,4 @@
-﻿  Algorithms.cpp
-c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(31): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(165): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(167): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-  Создание кода...
-  Компиляция...
-  main.cpp
-  Создание кода...
+﻿  main.cpp
+c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\main.cpp(29): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\main.cpp(38): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
   Lab3_OOP.vcxproj -> C:\Users\Анна\Documents\LABS\voronoi_oop_lab3\Lab3_OOP\x64\Debug\Lab3_OOP.exe

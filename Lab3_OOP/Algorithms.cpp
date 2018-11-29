@@ -2,12 +2,11 @@
 
 int numOfPoints = 100;
 int bordersOfScreen = 600;
-vector<Point> polygon;
 
 
 //***********************************
 
-vector<vector<Point>> GrahamAlgo(vector<Point> vect)
+vector<Point> GrahamAlgo(vector<Point> vect)
 {
 	int temp = 0;
 	for (int i = 0; i < vect.size(); i++)
@@ -44,7 +43,7 @@ vector<vector<Point>> GrahamAlgo(vector<Point> vect)
 		toPrint.push_back(s);
 		j++;
 	}
-	return toPrint;
+	return s;
 };
 
 int polarCompare(Point p1, Point p2, Point origin)
@@ -77,56 +76,9 @@ void sortByPolar(vector<Point> vect, Point origin)
 		}
 };
 
-
-
-
 //***********************************
 
-vector<vector<Point>> Keil_KirkpatrikAlgo(vector<Point> vect) //fix or rewrite
-{
-	vector<Point> LeftCoord, RightCoord;
-	Point temp;
-	for (int i = 1; i<vect.size() - 1; i++)
-		if (vect[i - 1] < vect[i])
-		{
-			temp = vect[i];
-			vect[i] = vect[i + 1];
-			vect[i + 1] = temp;
-		}
-
-	int t = 1;
-	LeftCoord.push_back(vect[t - 1]);
-	while (vect[t - 1].getY() == vect[t].getY()) t++;
-	RightCoord.push_back(vect[t - 1]);
-
-	vector<Point> s;
-	vector<vector<Point>> toPrint;
-
-	for (int i = 0; i < LeftCoord.size(); i++)
-	{
-		
-	}
-
-	return toPrint;
-};
-
-/*Keil_Kirkpatrik()
-{
-	int i = 0;
-	while (i < numOfPoints)
-	{
-		Point p;
-		p.setX(double(abs(rand() % bordersOfScreen)));
-		p.setY(double(abs(rand() % bordersOfScreen)));
-		polygon.push_back(p);
-	}
-}*/
-
-
-
-//***********************************
-
-vector<vector<Point>> Andrew_JarwisAlgo(vector<Point> vect)
+vector<Point> Andrew_JarwisAlgo(vector<Point> vect)
 {
 	sortByX(vect);
 
@@ -137,12 +89,20 @@ vector<vector<Point>> Andrew_JarwisAlgo(vector<Point> vect)
 	upHull.push_back(left);
 	downHull.push_back(left);
 
+
 	for (int i = 1; i < vect.size()-1; i++)
 	{
 		if (vect[i].relateToLine(left, right) == true)
+		{
 			upHull.push_back(vect[i]);
+			cout << "upHull" << vect[i].getX() << vect[i].getY() << endl;
+		}
 		else
+		{
 			downHull.push_back(vect[i]);
+			cout << "downHull" << vect[i].getX() << vect[i].getY() << endl;
+		}
+
 	}
 	downHull.push_back(right);
 
@@ -173,7 +133,7 @@ vector<vector<Point>> Andrew_JarwisAlgo(vector<Point> vect)
 
 		}
 	}
-	return toPrint;
+	return s;
 };
 
 void sortByX(vector<Point> vect)
@@ -191,10 +151,39 @@ void sortByX(vector<Point> vect)
 		}
 };
 
+//***********************************
+
+vector<Point> Keil_KirkpatrikAlgo(vector<Point> vect) //fix or rewrite
+{
+	vector<Point> LeftCoord, RightCoord;
+	Point temp;
+	for (int i = 1; i<vect.size() - 1; i++)
+		if (vect[i - 1] < vect[i])
+		{
+			temp = vect[i];
+			vect[i] = vect[i + 1];
+			vect[i + 1] = temp;
+		}
+
+	int t = 1;
+	LeftCoord.push_back(vect[t - 1]);
+	while (vect[t - 1].getY() == vect[t].getY()) t++;
+	RightCoord.push_back(vect[t - 1]);
+
+	vector<Point> s;
+	vector<vector<Point>> toPrint;
+
+	for (int i = 0; i < LeftCoord.size(); i++)
+	{
+
+	}
+
+	return s;
+};
 
 //***********************************
 
-vector<vector<Point>> quickRecAlgo(vector<Point> vect)
+vector<Point> quickRecAlgo(vector<Point> vect)
 {
 	sortByX(vect);
 
@@ -214,6 +203,7 @@ vector<vector<Point>> quickRecAlgo(vector<Point> vect)
 	}
 	downHull.push_back(right);
 
+	vector<Point> s;
 	vector<vector<Point>> toPrint;
-	return toPrint;
+	return s;
 };
