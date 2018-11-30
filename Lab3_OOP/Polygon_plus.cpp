@@ -6,18 +6,21 @@ using namespace std;
 
 Point::Point()
 {
-	sf::CircleShape p(1.f);
+	/*sf::CircleShape p(1.f);
 	p.setFillColor(sf::Color::White);
-	p.setPosition(0.f, 0.f);
+	p.setPosition(0.f, 0.f);*/
+
+	x = 0;
+	y = 0;
 }
 
 Point::Point(double x_, double y_)
 {
 	x = x_;
 	y = y_;
-	sf::CircleShape p(1.f);
+	/*sf::CircleShape p(1.f);
 	p.setFillColor(sf::Color::White);
-	p.setPosition(x, y);
+	p.setPosition(x, y);*/
 }
 
 Point Point::operator+(Point & other)
@@ -82,12 +85,6 @@ void Point::setY(double yNew)
 double Point::moduleOfVect()
 {
 	return sqrt(x*x + y*y);
-}
-
-void Point::changePoint()
-{
-	sf::CircleShape p(2.f);
-	p.setFillColor(sf::Color::Green);
 }
 
 double Point::polarAngle()

@@ -1,19 +1,6 @@
 #pragma once
 #include "Polygon_plus.h"
-/*
-vector<Point> GrahamAlgo(vector<Point> vect);
-int polarCompare(Point p1, Point p2, Point origin);
-void sortByPolar(vector<Point> vect, Point origin);
 
-vector<Point> Keil_KirkpatrikAlgo(vector<Point> vect);
-
-
-vector<Point> Andrew_JarwisAlgo(vector<Point> vect);
-void sortByX(vector<Point> vect);
-
-
-vector<Point> quickRecAlgo(vector<Point> vect);
-*/
 
 class Algorithms
 {
@@ -53,7 +40,7 @@ class  Andrew_Jarwis :public Algorithms
 {
 private:
 	vector<vector<Point>> Andrew_JarwisAlgo(vector<Point> vect);
-	vector<Point> sortByX(vector<Point> vect);
+	void sortByX(vector<Point> vect);
 public:
 	Andrew_Jarwis();
 	Andrew_Jarwis(vector<Point> vec);
@@ -65,7 +52,7 @@ class  quickRec :public Algorithms
 {
 private:
 	vector<vector<Point>> quickRecAlgo(vector<Point> vect);
-	vector<Point> sortByX(vector<Point> vect);
+	void sortByX(vector<Point> vect);
 public:
 	quickRec();
 	quickRec(vector<Point> vec);

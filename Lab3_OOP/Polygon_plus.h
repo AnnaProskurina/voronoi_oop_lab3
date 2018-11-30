@@ -1,8 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-//#include <algorithm>
-#include <stack>
 
 using namespace std;
 
@@ -26,7 +24,6 @@ public:
 	void setX(double xNew);
 	void setY(double yNew);
 	double moduleOfVect();	 
-	void changePoint();
 	double polarAngle();
 	bool isLeft(Point pBase, Point p1);
 	bool isRight(Point pBase, Point p1);
