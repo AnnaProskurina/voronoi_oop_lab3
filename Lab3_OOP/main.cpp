@@ -9,6 +9,7 @@ using namespace std;
 
 int main()
 {
+	/*
 	Point p1(0.0, 0.0);
 	Point p2(0.0, 200.0);
 	Point p3(200.0, 200.0);
@@ -31,12 +32,13 @@ int main()
 		lines[i].color = sf::Color::White;
 	}
 
-	sf::VertexArray points(sf::Points, grahamTest.size());
+	sf::CircleShape points[10];
 
 	for (int i = 0; i < grahamTest.size(); i++)
 	{
-		points[i].position = sf::Vector2f(grahamTest[i].getX(), grahamTest[i].getY());
-		points[i].color = sf::Color::Red;
+		points[i].setPosition (sf::Vector2f(grahamTest[i].getX(), grahamTest[i].getY()));
+		points[i].setFillColor(sf::Color::Red);
+		points[i].setRadius(4);
 	}
 
 	while (window.isOpen()) 
@@ -48,7 +50,10 @@ int main()
 				window.close();
 		}
 		window.clear();
-		window.draw(points);
+		for (int i = 0; i < 10; i++)
+		{
+			window.draw(points[i]);
+		}
 		window.draw(lines);
 		window.display();
 	}
@@ -57,7 +62,7 @@ int main()
 	{
 		cout << res[i].getX() << "  " << res[i].getY() << "  " << endl;
 	}
-	
+	*/
 	system("pause");
 	return 0;
 }

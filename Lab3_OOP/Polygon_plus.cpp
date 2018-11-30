@@ -58,6 +58,7 @@ bool Point::sortX(Point & other)
 		return false;
 }
 
+
 double Point::getX()
 {
 	return x;

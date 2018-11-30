@@ -1,4 +1,60 @@
-﻿  main.cpp
-c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\main.cpp(29): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\main.cpp(38): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-  Lab3_OOP.vcxproj -> C:\Users\Анна\Documents\LABS\voronoi_oop_lab3\Lab3_OOP\x64\Debug\Lab3_OOP.exe
+﻿  Algorithms.cpp
+c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(268): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(431): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(433): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(2294): error C4996: 'std::copy::_Unchecked_iterators::_Deprecate': Call to 'std::copy' with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(2294): note:  см. объявление "std::copy::_Unchecked_iterators::_Deprecate"
+  c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(331): note: выполняется компиляция ссылки на экземпляр шаблон функции "_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::vector<_Ty,std::allocator<_Ty>>>(_InIt,_InIt,_OutIt)"
+          with
+          [
+              _OutIt=std::vector<Point,std::allocator<Point>>,
+              _Ty=Point,
+              _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Point>>>
+          ]
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(727): error C2794: iterator_category: не является прямым или косвенным базовым классом для "std::iterator_traits<_Iter>"
+          with
+          [
+              _Iter=std::vector<Point,std::allocator<Point>>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(2284): note: выполняется компиляция ссылки на экземпляр шаблон функции "auto std::_Unchecked_n<_OutIt,__int64>(_Iter,_Diff)"
+          with
+          [
+              _OutIt=std::vector<Point,std::allocator<Point>>,
+              _Iter=std::vector<Point,std::allocator<Point>>,
+              _Diff=__int64
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(2295): note: выполняется компиляция ссылки на экземпляр шаблон функции "_OutIt std::_Copy_no_deprecate<_InIt,_OutIt>(_InIt,_InIt,_OutIt)"
+          with
+          [
+              _OutIt=std::vector<Point,std::allocator<Point>>,
+              _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Point>>>
+          ]
+  c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\algorithms.cpp(331): note: выполняется компиляция ссылки на экземпляр шаблон функции "_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::vector<_Ty,std::allocator<_Ty>>>(_InIt,_InIt,_OutIt)"
+          with
+          [
+              _OutIt=std::vector<Point,std::allocator<Point>>,
+              _Ty=Point,
+              _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Point>>>
+          ]
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(727): error C2938: "_Iter_cat_t<std::vector<Point,std::allocator<_Ty>>>": не удалось специализировать шаблон псевдонима
+          with
+          [
+              _Ty=Point
+          ]
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(727): error C2955: "std::is_base_of": для использования класс шаблон требуется список аргументов шаблон
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\type_traits(1272): note:  см. объявление "std::is_base_of"
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(727): error C2672: "_Unchecked_n1": не найдена соответствующая перегруженная функция
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(727): error C2780: auto std::_Unchecked_n1(_Iter,_Diff,std::true_type): требует аргументов: 3, имеется: 2
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(712): note:  см. объявление "std::_Unchecked_n1"
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(727): error C2780: auto std::_Unchecked_n1(_Iter,_Diff,std::false_type): требует аргументов: 3, имеется: 2
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(705): note:  см. объявление "std::_Unchecked_n1"
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(2284): error C3313: "_UDest": переменная не может иметь тип "const void"
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xutility(2286): error C3536: _UDest: не может использоваться до инициализации
+  Создание кода...
+  Компиляция...
+  Polygon_plus.cpp
+c:\users\анна\documents\labs\voronoi_oop_lab3\lab3_oop\polygon_plus.cpp(20): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+  Создание кода...
+  Компиляция...
+  main.cpp
+  Создание кода...

@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <algorithm>
+//#include <algorithm>
 #include <stack>
 
 using namespace std;
